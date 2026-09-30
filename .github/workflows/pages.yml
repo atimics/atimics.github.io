@@ -19,6 +19,7 @@ jobs:
           mkdir -p _site/nanogpt-macbook
           cp nanogpt-macbook/index.html _site/nanogpt-macbook/
           cp 404.html redirect.js _site/
+          if [ -d voxel-wild ]; then cp -R voxel-wild _site/voxel-wild; fi
           touch _site/.nojekyll
       - uses: actions/upload-pages-artifact@v4
         with:
