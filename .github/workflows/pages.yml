@@ -23,6 +23,10 @@ jobs:
           cp 404.html redirect.js _site/
           if [ -d voxel-wild ]; then cp -R voxel-wild _site/voxel-wild; fi
           touch _site/.nojekyll
+      - name: Build and verify Voxel Wild 3
+        run: |
+          node voxel-wild/v3/build.cjs _site/voxel-wild/v3
+          node --test _site/voxel-wild/v3/core.test.cjs _site/voxel-wild/v3/systems.test.cjs
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
